@@ -4,6 +4,7 @@ import ModernWellnessScore from './components/ModernWellnessScore';
 import ModernTrainingCalendar from './components/ModernTrainingCalendar';
 import ModernARExercise from './components/ModernARExercise';
 import ShareWorkout from './components/ShareWorkout';
+import GamifiedAchievement from './components/GamifiedAchievement';
 import WellnessScore from './components/WellnessScore';
 import CalendarView from './components/CalendarView';
 import Dashboard from './components/Dashboard';
@@ -11,7 +12,7 @@ import Activities from './components/Activities';
 import Workout from './components/Workout';
 import GetStarted from './components/GetStarted';
 
-type ViewType = 'modern' | 'modern-wellness' | 'modern-calendar' | 'modern-ar' | 'share' | 'original';
+type ViewType = 'modern' | 'modern-wellness' | 'modern-calendar' | 'modern-ar' | 'share' | 'gamified' | 'original';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('modern');
@@ -23,6 +24,7 @@ function App() {
       {currentView === 'modern-calendar' && <ModernTrainingCalendar />}
       {currentView === 'modern-ar' && <ModernARExercise />}
       {currentView === 'share' && <ShareWorkout />}
+      {currentView === 'gamified' && <GamifiedAchievement />}
       {currentView === 'original' && (
         <div className="bg-gradient-to-br from-gray-200 to-gray-300 min-h-screen p-8">
           <div className="max-w-7xl mx-auto">
@@ -92,6 +94,16 @@ function App() {
             }`}
           >
             Share
+          </button>
+          <button
+            onClick={() => setCurrentView('gamified')}
+            className={`px-4 py-2 rounded-full font-semibold text-sm transition-colors ${
+              currentView === 'gamified'
+                ? 'bg-gradient-to-r from-teal-400 to-blue-500 text-white'
+                : 'bg-white text-gray-900 hover:bg-gray-100 shadow-lg'
+            }`}
+          >
+            Gamified
           </button>
           <button
             onClick={() => setCurrentView('original')}
