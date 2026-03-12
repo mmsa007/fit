@@ -5,6 +5,9 @@ import ModernTrainingCalendar from './components/ModernTrainingCalendar';
 import ModernARExercise from './components/ModernARExercise';
 import ShareWorkout from './components/ShareWorkout';
 import GamifiedAchievement from './components/GamifiedAchievement';
+import HabitCheckInCard from './components/HabitCheckInCard';
+import HabitDashboard from './components/HabitDashboard';
+import HabitCalendar from './components/HabitCalendar';
 import WellnessScore from './components/WellnessScore';
 import CalendarView from './components/CalendarView';
 import Dashboard from './components/Dashboard';
@@ -12,7 +15,7 @@ import Activities from './components/Activities';
 import Workout from './components/Workout';
 import GetStarted from './components/GetStarted';
 
-type ViewType = 'modern' | 'modern-wellness' | 'modern-calendar' | 'modern-ar' | 'share' | 'gamified' | 'original';
+type ViewType = 'modern' | 'modern-wellness' | 'modern-calendar' | 'modern-ar' | 'share' | 'gamified' | 'habit-card' | 'habit-dashboard' | 'habit-calendar' | 'original';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('modern');
@@ -25,6 +28,9 @@ function App() {
       {currentView === 'modern-ar' && <ModernARExercise />}
       {currentView === 'share' && <ShareWorkout />}
       {currentView === 'gamified' && <GamifiedAchievement />}
+      {currentView === 'habit-card' && <HabitCheckInCard habitName="喝水8杯" categoryIcon="💧" consecutiveDays={7} totalCheckIns={30} date="2026年3月12日" motivationalText="坚持就是胜利！每天8杯水，健康伴随你！" color="blue" />}
+      {currentView === 'habit-dashboard' && <HabitDashboard />}
+      {currentView === 'habit-calendar' && <HabitCalendar />}
       {currentView === 'original' && (
         <div className="bg-gradient-to-br from-gray-200 to-gray-300 min-h-screen p-8">
           <div className="max-w-7xl mx-auto">
@@ -104,6 +110,36 @@ function App() {
             }`}
           >
             Gamified
+          </button>
+          <button
+            onClick={() => setCurrentView('habit-card')}
+            className={`px-4 py-2 rounded-full font-semibold text-sm transition-colors ${
+              currentView === 'habit-card'
+                ? 'bg-gradient-to-r from-teal-400 to-blue-500 text-white'
+                : 'bg-white text-gray-900 hover:bg-gray-100 shadow-lg'
+            }`}
+          >
+            Habit Card
+          </button>
+          <button
+            onClick={() => setCurrentView('habit-dashboard')}
+            className={`px-4 py-2 rounded-full font-semibold text-sm transition-colors ${
+              currentView === 'habit-dashboard'
+                ? 'bg-gradient-to-r from-teal-400 to-blue-500 text-white'
+                : 'bg-white text-gray-900 hover:bg-gray-100 shadow-lg'
+            }`}
+          >
+            Habit Board
+          </button>
+          <button
+            onClick={() => setCurrentView('habit-calendar')}
+            className={`px-4 py-2 rounded-full font-semibold text-sm transition-colors ${
+              currentView === 'habit-calendar'
+                ? 'bg-gradient-to-r from-teal-400 to-blue-500 text-white'
+                : 'bg-white text-gray-900 hover:bg-gray-100 shadow-lg'
+            }`}
+          >
+            Habit Cal
           </button>
           <button
             onClick={() => setCurrentView('original')}
